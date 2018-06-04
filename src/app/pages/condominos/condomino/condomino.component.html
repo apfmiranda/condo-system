@@ -1,0 +1,67 @@
+<nb-card>
+  <nb-card-header>Basic form</nb-card-header>
+  <nb-card-body>
+
+    <form class="horizontal-form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="col-sm-12 mb-3 ">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" [ngClass]="aplicaCssErro('nome')" formControlName="nome" id="nome" placeholder="Nome">
+
+          <app-campo-control-erro [mostrarErro]="verificaValidTouched('nome')" msgErro="Nome é obrigatório">
+          </app-campo-control-erro>
+        </div>
+      </div>
+
+      <div formGroupName="endereco">
+
+        <div class="form-row">
+          <div class="col-sm-3 mb-3">
+            <label for="plato" class="control-label">Platô</label>
+            <input type="text" class="form-control" id="plato" formControlName="plato">
+          </div>
+
+          <div class="col-sm-3 mb-3">
+            <label for="quadra" class="control-label">Quadra</label>
+            <input type="text" class="form-control" id="quadra" [ngClass]="aplicaCssErro('endereco.quadra')" formControlName="quadra">
+
+            <div class="invalid-feedback">
+              Campo obrigatório.
+            </div>
+          </div>
+
+          <div class="col-sm-6 mb-3">
+            <label for="complemento" class="control-label">Complemento</label>
+            <input type="text" class="form-control" id="complemento" [ngClass]="aplicaCssErro('endereco.complemento')" formControlName="complemento">
+          </div>
+
+        </div>
+      </div>
+
+      <div formGroupName="contato">
+        <div class="form-row">
+          <div class="col-sm-8 mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" [ngClass]="aplicaCssErro('contato.email')" formControlName="email" id="email" placeholder="nome@email.com">
+
+            <app-campo-control-erro [mostrarErro]="verificaValidTouched('contato.email')" msgErro="Email inválido">
+            </app-campo-control-erro>
+          </div>
+
+          <div class="col-sm-4 mb-3">
+            <label for="telefone" class="control-label">Telefone</label>
+            <input type="text" class="form-control" id="telefone" formControlName="telefone">
+          </div>
+        </div>
+
+      </div>
+
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn" (click)="resetar()">cancelar</button>
+
+      <app-form-debug [form]="formulario"></app-form-debug>
+
+    </form>
+  </nb-card-body>
+</nb-card>
