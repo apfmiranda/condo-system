@@ -15,7 +15,7 @@ import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
   imports: [
     ThemeModule,    
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDTQz0YA-VkAXk-EdnvzfJtt7SIhmu-gsM',
+      apiKey: '',
       libraries: ['places'],
     }),
     LeafletModule.forRoot(),
