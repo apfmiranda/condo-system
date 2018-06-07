@@ -1,56 +1,80 @@
 <nb-card>
-  <nb-card-header>Basic form</nb-card-header>
+  <nb-card-header>Cadastro de Condomino</nb-card-header>
   <nb-card-body>
 
     <form class="horizontal-form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
-      <div class="form-row">
-        <div class="col-sm-12 mb-3 ">
-          <label for="nome">Nome</label>
-          <input type="text" class="form-control" [ngClass]="aplicaCssErro('nome')" formControlName="nome" id="nome" placeholder="Nome">
-
-          <app-campo-control-erro [mostrarErro]="verificaValidTouched('nome')" msgErro="Nome é obrigatório">
-          </app-campo-control-erro>
+      <div class="row">
+        <div class="col-sm-12 mb-3">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" [ngClass]="aplicaCssErro('nome')" formControlName="nome" id="nome" placeholder="Nome">
+            <!-- <app-campo-control-erro [mostrarErro]="verificaValidTouched('nome')" msgErro="Nome é obrigatório">
+          </app-campo-control-erro> -->
+            <div class="invalid-feedback">
+              Campo obrigatório.
+            </div>
+          </div>
         </div>
       </div>
 
       <div formGroupName="endereco">
 
-        <div class="form-row">
-          <div class="col-sm-3 mb-3">
-            <label for="plato" class="control-label">Platô</label>
-            <input type="text" class="form-control" id="plato" formControlName="plato">
-          </div>
+        <div class="row">
+          <div class="col-sm-4 mb-3">
+            <div class="form-group">
 
-          <div class="col-sm-3 mb-3">
-            <label for="quadra" class="control-label">Quadra</label>
-            <input type="text" class="form-control" id="quadra" [ngClass]="aplicaCssErro('endereco.quadra')" formControlName="quadra">
+              <label for="unidade" class="control-label">Unidade</label>
+              <div class="dropdown" ngbDropdown>
+                <button class="btn btn-primary" type="button" ngbDropdownToggle>
+                  {{ selectedView.plato }} - {{ selectedView.quadra }}{{selectedView.lote }}
+                </button>
+                <ul class="dropdown-menu" ngbDropdownMenu>
+                  <li class="dropdown-item" *ngFor="let v of dropDownPlato" (click)="this.selectedView = v">{{ v.plato }} - {{ v.quadra }}{{ v.lote }}</li>
+                </ul>
+              </div>
+              <!-- <input type="text" class="form-control" id="unidade" [ngClass]="aplicaCssErro('endereco.unidade')" formControlName="unidade" placeholder="Unidade"> -->
 
-            <div class="invalid-feedback">
-              Campo obrigatório.
+              <div class="invalid-feedback">
+                Campo obrigatório.
+              </div>
             </div>
           </div>
 
-          <div class="col-sm-6 mb-3">
-            <label for="complemento" class="control-label">Complemento</label>
-            <input type="text" class="form-control" id="complemento" [ngClass]="aplicaCssErro('endereco.complemento')" formControlName="complemento">
+          <div class="col-sm-8 mb-3">
+            <div class="form-group">
+              <label for="complemento" class="control-label">Complemento</label>
+              <input type="text" class="form-control" id="complemento" [ngClass]="aplicaCssErro('endereco.complemento')" formControlName="complemento"
+                placeholder="Complemento">
+            </div>
           </div>
-
         </div>
       </div>
 
-      <div formGroupName="contato">
-        <div class="form-row">
-          <div class="col-sm-8 mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" [ngClass]="aplicaCssErro('contato.email')" formControlName="email" id="email" placeholder="nome@email.com">
 
-            <app-campo-control-erro [mostrarErro]="verificaValidTouched('contato.email')" msgErro="Email inválido">
-            </app-campo-control-erro>
+
+      <div formGroupName="contato">
+        <div class="row">
+          <div class="col-sm-6 mb-3">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" [ngClass]="aplicaCssErro('contato.email')" formControlName="email" id="email" placeholder="nome@email.com">
+              <app-campo-control-erro [mostrarErro]="verificaValidTouched('contato.email')" msgErro="Email inválido">
+              </app-campo-control-erro>
+            </div>
           </div>
 
-          <div class="col-sm-4 mb-3">
-            <label for="telefone" class="control-label">Telefone</label>
-            <input type="text" class="form-control" id="telefone" formControlName="telefone">
+          <div class="col-sm-3 mb-3">
+            <div class="form-group">
+              <label for="telefone" class="control-label">Telefone</label>
+              <input type="text" class="form-control" id="telefone" formControlName="telefone" placeholder="Telefone">
+            </div>
+          </div>
+
+          <div class="col-sm-3 mb-3">
+            <div class="form-group">
+              <label for="interfone" class="control-label">Interfone</label>
+              <input type="text" class="form-control" id="interfone" formControlName="interfone" placeholder="interfone">
+            </div>
           </div>
         </div>
 

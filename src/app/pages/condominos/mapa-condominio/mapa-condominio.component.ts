@@ -19,25 +19,25 @@ export class MapaCondominioComponent implements OnInit {
     center: L.latLng(-7.91904, -35.08048)
   };
 
-  drawOptions = {
-    position: 'topright',
-    draw: {
-      marker: {
-        icon: L.icon({
-          iconSize: [25, 41],
-          iconAnchor: [13, 41],
-          iconUrl: 'assets/marker-icon.png',
-          shadowUrl: 'assets/marker-shadow.png'
-        })
-      },
-      polyline: false,
-      circle: {
-        shapeOptions: {
-          color: '#aaaaaa'
-        }
-      }
-    }
-  };
+  // drawOptions = {
+  //   position: 'topright',
+  //   draw: {
+  //     marker: {
+  //       icon: L.icon({
+  //         iconSize: [25, 41],
+  //         iconAnchor: [13, 41],
+  //         iconUrl: 'assets/marker-icon.png',
+  //         shadowUrl: 'assets/marker-shadow.png'
+  //       })
+  //     },
+  //     polyline: false,
+  //     circle: {
+  //       shapeOptions: {
+  //         color: '#aaaaaa'
+  //       }
+  //     }
+  //   }
+  // };
 
   constructor() { }
 

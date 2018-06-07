@@ -1,3 +1,5 @@
+import { NbAuthModule, NbDummyAuthProvider, NB_AUTH_TOKEN_CLASS, NbAuthJWTToken } from '@nebular/auth';
+import { AuthGuard } from './guards/auth-guard.service';
 /**
  * @license
  * Copyright Akveo. All Rights Reserved.
@@ -26,10 +28,28 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),    
+    NbAuthModule.forRoot({
+      providers: {
+        email: {          
+          service: NbDummyAuthProvider,
+          config: {
+            alwaysFail: false,
+            data: {
+              token: 'some-jwt-token'
+            },
+            token: {
+              key: 'token', // this parameter tells Nebular where to look for the token
+            },
+          },
+        },
+      },
+    }), 
   ],
   bootstrap: [AppComponent],
   providers: [
+    AuthGuard,
     { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: NB_AUTH_TOKEN_CLASS, useValue: NbAuthJWTToken },
   ],
 })
 export class AppModule {

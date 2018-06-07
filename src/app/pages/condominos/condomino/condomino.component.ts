@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 import { map, filter, scan } from 'rxjs/operators';
+import { UnidadeService } from './../../../services/unidade.service';
 import { Unidade } from '../../../models/unidade';
 
 @Component({
@@ -12,50 +13,42 @@ import { Unidade } from '../../../models/unidade';
 export class CondominoComponent implements OnInit {
 
   formulario: FormGroup;
-
-  lat: number = 51.678418;
-  lng: number = 7.809007;
-  zoom: number = 8;
+  dropDownPlato: any[];
+  selectedView;
 
   constructor(
     private formBuilder: FormBuilder,
+    private unidadeService: UnidadeService,
     private http: Http,
-  ) {}
+  ) {
+
+  }
 
 
   ngOnInit() {
-
-    // this.dropDownService.getEstadosBR()
-    //   .subscribe(dados => {
-    //     this.estados = dados;
-    //     console.log(dados);
-    //   });
+    this.getDropDownPlato();
 
     this.formulario = this.formBuilder.group({
       nome: [null, Validators.required],
-      
-      contato:this.formBuilder.group({
-        telefone: [null, Validators.required],
-        email:    [null, [Validators.required, Validators.email]],
+
+      contato: this.formBuilder.group({
+        telefone: [null],
+        interfone: [null],
+        email: [null, [Validators.required, Validators.email]],
       }),
 
       endereco: this.formBuilder.group({
-        plato:       [null],
-        quadra:      [null, Validators.required],
-        lote:        [null, Validators.required],
-        complemento: [null]       
+        unidade: [null, Validators.required],
+        complemento: [null]
       })
     });
 
   }
 
-  
-  onSubmit() {
-    // console.log(this.formulario);
 
-      console.log('formulario invalido');
-      this.verificaValidacoesForm(this.formulario);
-    
+  onSubmit() {
+    this.verificaValidacoesForm(this.formulario);
+    console.log('formulario submetido');
   }
 
   verificaValidacoesForm(formGroup: FormGroup) {
@@ -67,36 +60,6 @@ export class CondominoComponent implements OnInit {
       }
     });
 
-  }
-
-  populaDadodForm(dados) {
-    if (dados.erro) {
-      this.resetar();
-      alert("CEP não encontrado.");
-      return;
-    }
-
-    this.formulario.patchValue({
-      endereco: {
-        complemento: dados.complemento,
-        rua: dados.logradouro,
-        bairro: dados.bairro,
-        cidade: dados.localidade,
-        estado: dados.uf
-      }
-    });
-  }
-
-  resetarDadoForm() {
-    this.formulario.patchValue({
-      endereco: {
-        complemento: null,
-        rua: null,
-        bairro: null,
-        cidade: null,
-        estado: null
-      }
-    });
   }
 
   resetar() {
@@ -114,6 +77,18 @@ export class CondominoComponent implements OnInit {
     return {
       'is-invalid': this.verificaValidTouched(campo)
     };
+  }
+
+  
+  getDropDownPlato() {
+    this.unidadeService.save;
+    console.log("getDropDownPlato()");
+    
+    const arr: any[] = [...this.unidadeService.getData()];
+
+    
+    this.dropDownPlato  = arr;
+    this.selectedView = this.dropDownPlato[0]
   }
 
 }
