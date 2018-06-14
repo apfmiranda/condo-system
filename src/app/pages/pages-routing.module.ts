@@ -22,6 +22,10 @@ const routes: Routes = [{
       loadChildren: './condominos/condominos.module#CondominosModule',
     },
     {
+      path: 'administracao',
+      loadChildren: './administracao/administracao.module#AdministracaoModule',
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

@@ -1,7 +1,8 @@
+import { UnidadeServiceModel } from './../unidade.service.model';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class UnidadeService {
+export class UnidadeService implements UnidadeServiceModel {
 
   private nextId: number;
 
@@ -23,7 +24,7 @@ export class UnidadeService {
   }
 
   save(unidade) {
-    let unidades = this.getData();   
+    let unidades = this.getData();
     let indexUnidadeEdit = unidades.findIndex((obj => obj.id == unidade.id));
     unidades[indexUnidadeEdit] = unidade;
 

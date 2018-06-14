@@ -1,6 +1,5 @@
-import { UnidadeService } from './../../services/unidade.service';
+import { UnidadeService } from './../../services/local-storage/unidade.service';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { routedComponents, CondominosRoutingModule } from './condominos-routing.module';
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -13,7 +12,7 @@ import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
 
 @NgModule({
   imports: [
-    ThemeModule,    
+    ThemeModule,
     AgmCoreModule.forRoot({
       apiKey: '',
       libraries: ['places'],
@@ -24,11 +23,11 @@ import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
     Ng2SmartTableModule,
     CondominosRoutingModule
   ],
-  //exports: [Ng2SmartTableModule],
   declarations: [
     ...routedComponents
   ],
   providers: [UnidadeService]
+
 })
-export class CondominosModule { 
+export class CondominosModule {
 }

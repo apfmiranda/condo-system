@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormDebugComponent } from './form-debug/form-debug.component';
 import { HttpModule } from '@angular/http';
 import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
+import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
 
 @NgModule({
   imports: [
@@ -14,17 +15,20 @@ import { CampoControlErroComponent } from './campo-control-erro/campo-control-er
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    DlDateTimePickerDateModule
   ],
   exports: [
     FormDebugComponent,
-    CampoControlErroComponent
+    CampoControlErroComponent,
+    DlDateTimePickerDateModule
   ],
   declarations: [
     ...routedComponents,
     FormDebugComponent,
     CampoControlErroComponent
   ],
+  providers: [FormsModule],
 })
 export class MiscellaneousModule {
 }

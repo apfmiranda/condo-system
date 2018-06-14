@@ -1,7 +1,6 @@
-import { UnidadeService } from './../../../../services/unidade.service';
+import { UnidadeService } from './../../../../services/local-storage/unidade.service';
 import { Component, OnInit } from '@angular/core';
-import { LocalDataSource, Ng2SmartTableModule } from 'ng2-smart-table';
-import { log } from 'util';
+import { LocalDataSource } from 'ng2-smart-table';
 
 
 @Component({
@@ -53,16 +52,16 @@ export class ListaUnidadeComponent implements OnInit {
 
   onDeleteConfirm(event): void {
     if (window.confirm('Tem certeza que deseja apagar?')) {
-      this.unidadeService.delete(event.data.id);      
+      this.unidadeService.delete(event.data.id);
       event.confirm.resolve();
     } else {
       event.confirm.reject();
     }
   }
 
-  onSaveConfirm(event): void {        
+  onSaveConfirm(event): void {
     if (window.confirm('Tem certeza que deseja editar?')) {
-      this.unidadeService.save(event.newData);    
+      this.unidadeService.save(event.newData);
       event.confirm.resolve(event.newData);
     } else {
       event.confirm.reject();

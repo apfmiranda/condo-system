@@ -30,6 +30,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
   },
   {
+    title: "ADMINISTRACAO",
+    icon: "nb-shuffle",
+    children: [
+      {
+        title: "Usuarios",
+        link: "/pages/administracao/usuarios"
+      }
+    ]
+  },
+  {
     title: "PORTARIA",
     icon: "nb-shuffle",
     children: [

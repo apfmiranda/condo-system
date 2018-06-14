@@ -1,9 +1,7 @@
+import { UnidadeService } from './../../../services/local-storage/unidade.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
-import { map, filter, scan } from 'rxjs/operators';
-import { UnidadeService } from './../../../services/unidade.service';
-import { Unidade } from '../../../models/unidade';
 
 @Component({
   selector: 'condomino',
@@ -81,12 +79,7 @@ export class CondominoComponent implements OnInit {
 
   
   getDropDownPlato() {
-    this.unidadeService.save;
-    console.log("getDropDownPlato()");
-    
     const arr: any[] = [...this.unidadeService.getData()];
-
-    
     this.dropDownPlato  = arr;
     this.selectedView = this.dropDownPlato[0]
   }

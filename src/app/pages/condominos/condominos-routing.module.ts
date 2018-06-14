@@ -42,6 +42,5 @@ export const routedComponents = [
     UnidadeComponent,
     CondominoComponent,
     MapaCondominioComponent,
-    ListaUnidadeComponent
-    
+    ListaUnidadeComponent    
 ]
