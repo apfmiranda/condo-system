@@ -1,3 +1,4 @@
+import { ConsultaCepService } from './service/consultaCep.service';
 import { NgModule } from '@angular/core';
 import { ThemeModule } from '../../@theme/theme.module';
 import { MiscellaneousRoutingModule, routedComponents } from './miscellaneous-routing.module';
@@ -28,7 +29,7 @@ import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
     FormDebugComponent,
     CampoControlErroComponent
   ],
-  providers: [FormsModule],
+  providers: [FormsModule, ConsultaCepService],
 })
 export class MiscellaneousModule {
 }

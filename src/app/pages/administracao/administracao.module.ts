@@ -1,3 +1,4 @@
+import { ConsultaCepService } from './../miscellaneous/service/consultaCep.service';
 import { MiscellaneousModule } from './../miscellaneous/miscellaneous.module';
 import { NgModule } from '@angular/core';
 import { routedComponents, AdministracaoRoutingModule } from './administracao-routing.module';
@@ -12,5 +13,6 @@ import { ThemeModule } from './../../@theme/theme.module';
   declarations: [
     ...routedComponents    
   ]
+  
 })
 export class AdministracaoModule { }

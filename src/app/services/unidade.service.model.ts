@@ -1,4 +1,4 @@
-export interface UnidadeServiceModel {
+export declare abstract class UnidadeServiceModel {
 
     save(unidade);
     delete(id);

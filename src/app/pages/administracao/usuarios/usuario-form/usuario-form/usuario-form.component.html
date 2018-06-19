@@ -38,7 +38,7 @@
           <label for="dp">Data de Nascimento</label>
           <div class="form-group">
             <div class="input-group">
-              <input class="form-control" placeholder="yyyy-mm-dd" id="dp" name="dp" formControlName="dataNascimento" ngbDatepicker #d="ngbDatepicker">
+              <input readonly="true" class="form-control" placeholder="dd-mm-yyyy" id="dp" name="dp" formControlName="dataNascimento" ngbDatepicker #d="ngbDatepicker">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
                   <img src="assets/images/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
@@ -47,6 +47,7 @@
             </div>
           </div>
         </div>
+
       </div>
 
       <br>
@@ -56,13 +57,13 @@
         <div class="form-row">
           <div class="col-md-3 mb-3">
             <label for="cep">CEP</label>
-            <input type="text" class="form-control" id="cep" formControlName="cep" [ngClass]="aplicaCssErro('endereco.cep')" placeholder="CEP"
+            <input type="text" (focusout)="consultaCEP()" class="form-control" id="cep" formControlName="cep" [ngClass]="aplicaCssErro('endereco.cep')" placeholder="CEP"
               required>
             <div class="invalid-feedback">
               Campo obrigatório.
             </div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-4 mb-3">
             <label for="cidade">Cidade</label>
             <input type="text" class="form-control" id="cidade" [ngClass]="aplicaCssErro('endereco.cidade')" formControlName="cidade"
               placeholder="Cidade" required>
@@ -70,10 +71,18 @@
               Campo obrigatório.
             </div>
           </div>
-          <div class="col-md-3 mb-3">
+          <div class="col-md-2 mb-3">
             <label for="estado">Estado</label>
             <input type="text" class="form-control" id="estado" formControlName="estado" [ngClass]="aplicaCssErro('endereco.estado')"
               placeholder="Estado" required>
+            <div class="invalid-feedback">
+              Campo obrigatório.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="bairro">Bairro</label>
+            <input type="text" class="form-control" id="bairro" formControlName="bairro" [ngClass]="aplicaCssErro('endereco.bairro')"
+              placeholder="Bairro" required>
             <div class="invalid-feedback">
               Campo obrigatório.
             </div>
@@ -107,7 +116,7 @@
         </div>
 
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <div class="form-check">
           <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
           <label class="form-check-label" for="invalidCheck3">
@@ -117,8 +126,8 @@
             You must agree before submitting.
           </div>
         </div>
-      </div>
-      <button class="btn btn-primary" type="submit">Submit form</button>
+      </div> -->
+      <button class="btn btn-primary" type="submit">Submeter</button>
 
       <app-form-debug [form]="formulario"></app-form-debug>
     </form>
